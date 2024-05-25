@@ -24,12 +24,28 @@
             return (<h1>Belajar React Bareng {author ? author : "Pak Dhika"}🚀</h1>);
         }
 
+        // function HomePage() {
+        //     return(
+        //         <>
+        //             <Header author="WPU"/>
+        //             <Header />
+        //         </>
+        //     );
+        // }
+        
         function HomePage() {
+            const developers = ['Sandhika Galih', 'Fuadit Muhammad', 'Muhammad Mujahid'];
             return(
-                <>
-                    <Header author="WPU"/>
+                <div>
                     <Header />
-                </>
+                    <ul>
+                        {developers.map((developer) => (
+                            <li>
+                                {developer}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             );
         }
 
