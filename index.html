@@ -18,15 +18,17 @@
         const container = document.getElementById('root');
         const root = ReactDOM.createRoot(container);
 
-        function Header(props) { 
-            return (<h1>Belajar React Bareng {props.author}🚀</h1>);
+        // Get Object From Destructuring Props
+        function Header({author}) { 
+            // Ternary Operator Implementation for Props Default Value
+            return (<h1>Belajar React Bareng {author ? author : "Pak Dhika"}🚀</h1>);
         }
 
         function HomePage() {
             return(
                 <>
                     <Header author="WPU"/>
-                    <Header author="Pak Dhika"/>
+                    <Header />
                 </>
             );
         }
