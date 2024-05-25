@@ -35,6 +35,15 @@
         
         function HomePage() {
             const developers = ['Sandhika Galih', 'Fuadit Muhammad', 'Muhammad Mujahid'];
+
+            //likes variable is state, setLikes() is state updater function, useState() function is hooks
+            const [likes, setLikes] = React.useState(0);
+
+            //onClick props function
+            function handleClick() {
+                setLikes(likes+1);
+            }
+
             return(
                 <div>
                     <Header />
@@ -47,6 +56,11 @@
                             ))
                         }
                     </ul>
+
+                    {/*State and Hooks Implementation*/}
+                    <button onClick={handleClick}>
+                        Like ({likes})
+                    </button>
                 </div>
             );
         }
