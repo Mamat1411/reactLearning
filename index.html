@@ -18,49 +18,97 @@
         const container = document.getElementById('root');
         const root = ReactDOM.createRoot(container);
 
-        // Get Object From Destructuring Props
-        function Header({author}) { 
-            // Ternary Operator Implementation for Props Default Value
-            return (<h1>Belajar React Bareng {author ? author : "Pak Dhika"}🚀</h1>);
-        }
+        // // Get Object From Destructuring Props
+        // function Header({author}) { 
+        //     // Ternary Operator Implementation for Props Default Value
+        //     return (<h1>Belajar React Bareng {author ? author : "Pak Dhika"}🚀</h1>);
+        // }
 
+        // // function HomePage() {
+        // //     return(
+        // //         <>
+        // //             <Header author="WPU"/>
+        // //             <Header />
+        // //         </>
+        // //     );
+        // // }
+        
         // function HomePage() {
+        //     const developers = ['Sandhika Galih', 'Fuadit Muhammad', 'Muhammad Mujahid'];
+
+        //     //likes variable is state, setLikes() is state updater function, useState() function is hooks
+        //     const [likes, setLikes] = React.useState(0);
+
+        //     //onClick props function
+        //     function handleClick() {
+        //         setLikes(likes+1);
+        //     }
+
         //     return(
-        //         <>
-        //             <Header author="WPU"/>
+        //         <div>
         //             <Header />
-        //         </>
+        //             <ul>
+        //                 {
+        //                     developers.map((developer) => (
+        //                         <li key={developer}>
+        //                             {developer}
+        //                         </li>
+        //                     ))
+        //                 }
+        //             </ul>
+
+        //             {/*State and Hooks Implementation*/}
+        //             <button onClick={handleClick}>
+        //                 Like ({likes})
+        //             </button>
+        //         </div>
         //     );
         // }
-        
-        function HomePage() {
-            const developers = ['Sandhika Galih', 'Fuadit Muhammad', 'Muhammad Mujahid'];
 
-            //likes variable is state, setLikes() is state updater function, useState() function is hooks
-            const [likes, setLikes] = React.useState(0);
-
-            //onClick props function
-            function handleClick() {
-                setLikes(likes+1);
-            }
+        //State and Hooks Exercise 1
+        //-----------------------------
+        //Buttons Component
+        function Button({text, onClick, counter}) {
+            const cssStyle = (text !== 'Reset') ? {} : {margin: 20, display: 'block'}
 
             return(
-                <div>
-                    <Header />
-                    <ul>
-                        {
-                            developers.map((developer) => (
-                                <li key={developer}>
-                                    {developer}
-                                </li>
-                            ))
-                        }
-                    </ul>
+                <button onClick={onClick} style={cssStyle}>
+                    {text}
+                </button>
+            );
+        }
 
-                    {/*State and Hooks Implementation*/}
-                    <button onClick={handleClick}>
-                        Like ({likes})
-                    </button>
+        //Counter
+        function NumCount({counter}) {
+            return(
+                <span style={{ margin:20 }}>
+                    {counter}
+                </span>
+            );
+        }
+
+        //Calling All Components and States
+        function HomePage() {
+            const [counter, setCounter] = React.useState(0);
+
+            function increment() {
+                setCounter(counter+1);
+            }
+
+            function decrement() {
+                setCounter(counter-1);
+            }
+
+            function reset() {
+                setCounter(0);
+            }
+
+            return (
+                <div>
+                    <Button text="-" onClick={decrement} counter={counter}/>
+                    <NumCount counter={counter}/>
+                    <Button text="+" onClick={increment} counter={counter}/>
+                    <Button text="Reset" onClick={reset} counter={counter}/>
                 </div>
             );
         }
