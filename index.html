@@ -65,14 +65,62 @@
         //     );
         // }
 
-        //State and Hooks Exercise 1
+        // //State and Hooks Exercise 1
+        // //-----------------------------
+        // //Buttons Component
+        // function Button({text, onClick, counter}) {
+        //     const cssStyle = (text !== 'Reset') ? {} : {margin: 20, display: 'block'}
+
+        //     return(
+        //         <button onClick={onClick} style={cssStyle}>
+        //             {text}
+        //         </button>
+        //     );
+        // }
+
+        // //Counter
+        // function NumCount({counter}) {
+        //     return(
+        //         <span style={{ margin:20 }}>
+        //             {counter}
+        //         </span>
+        //     );
+        // }
+
+        // //Calling All Components and States
+        // function HomePage() {
+        //     const [counter, setCounter] = React.useState(0);
+
+        //     function increment() {
+        //         setCounter(counter+1);
+        //     }
+
+        //     function decrement() {
+        //         setCounter(counter-1);
+        //     }
+
+        //     function reset() {
+        //         setCounter(0);
+        //     }
+
+        //     return (
+        //         <div>
+        //             <Button text="-" onClick={decrement} counter={counter}/>
+        //             <NumCount counter={counter}/>
+        //             <Button text="+" onClick={increment} counter={counter}/>
+        //             <Button text="Reset" onClick={reset} counter={counter}/>
+        //         </div>
+        //     );
+        // }
+
+        //State and Hooks Exercise 2
         //-----------------------------
         //Buttons Component
         function Button({text, onClick, counter}) {
-            const cssStyle = (text !== 'Reset') ? {} : {margin: 20, display: 'block'}
+            const cssStyle = (text !== 'Reset') ? {} : {margin: 20, display: 'block'};
 
             return(
-                <button onClick={onClick} style={cssStyle}>
+                <button onClick={onClick} style={cssStyle} disabled={((counter < 0 || counter > 9) && text !== 'Reset') ? true : ((counter >= 0 && counter <= 9) && text === 'Reset') ? true : false}>
                     {text}
                 </button>
             );
@@ -82,7 +130,7 @@
         function NumCount({counter}) {
             return(
                 <span style={{ margin:20 }}>
-                    {counter}
+                    {(counter < 0 || counter > 9) ? 'Done!!' : counter}
                 </span>
             );
         }
